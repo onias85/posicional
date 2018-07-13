@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!-- ========================================================================================================== -->
+    <!--	RecordProducer que gera os dados para o processo de batch -->
+    <!-- =========================================================================================================== -->
+    <bean id="producer"
+          class="com.altec.bsbr.app.ir.reinf.batch.producer.ReinfProducer">
+    </bean>
+    <!-- =========================================================================================================== -->
+    <!-- RecordConsumer que consome os dados para o processo de batch -->
+    <!-- =========================================================================================================== -->
+    <bean id="consumer"
+          class="com.altec.bsbr.app.ir.reinf.batch.consumer.ReinfConsumer">
+    </bean>
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:ctx="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	                    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+    
+    
+    <util:properties id="dirPathsProps">
+	   <prop key="dir.input">C:\Reinf\entrada</prop>
+	   <prop key="dir.output">C:\Reinf\saida</prop>
+	   <prop key="dir.gestor.outros">\\bsbrsp1010\apps\IR\E-finanaceira teste HK\OUTROS</prop>
+	   <prop key="jdbc.driverClassName">oracle.jdbc.OracleDriver</prop>
+	   <prop key="jdbc.url">jdbc:oracle:thin:@dbirdvlbr01:1529:orads037</prop>
+	   <prop key="jdbc.username">IRINFUSER</prop>
+	   <prop key="jdbc.password">DESE_0102</prop>
+	</util:properties>
+
+</beans>

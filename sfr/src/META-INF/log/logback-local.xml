@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <!-- =========================================================================================================== -->
+    <!-- Appenders                                                                                                   -->
+    <!-- =========================================================================================================== -->
+
+	<appender name="DEBUG_APPLICATION_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${BASE_LOG_PATH}/${application.name}_debug.log</File>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+          <FileNamePattern>${BASE_LOG_PATH}/${application.name}_debug_%i.log.zip</FileNamePattern>
+          <MinIndex>1</MinIndex>
+          <MaxIndex>10</MaxIndex>
+        </rollingPolicy>
+        
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+          <MaxFileSize>100MB</MaxFileSize>
+        </triggeringPolicy>
+        
+        <append>false</append>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} {%X{user}} %msg%n</Pattern>
+        </layout>
+
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <!-- =========================================================================================================== -->
+    <!-- Loggers                                                                                                     -->
+    <!-- =========================================================================================================== -->
+
+    <logger name="com.altec">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com.altec.bsbr.fw.batch">
+        <level value="INFO"/>
+    </logger>
+    <logger name="com.altec.bsbr.app.ir.op.fin.batch.ctde">
+        <level value="TRACE"/>
+    </logger>
+
+    <!-- =========================================================================================================== -->
+    <!-- Root Logger                                                                                                 -->
+    <!-- =========================================================================================================== -->
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="DEBUG_APPLICATION_LOG_FILE"/>
+    </root>
+
+</configuration>

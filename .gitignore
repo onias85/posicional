@@ -1,0 +1,10 @@
+*.class
+/target/
+/settings/
+/logs
+.mvn
+.project
+/mvnw
+/mvnw.cmd
+.classpath
+/.metadata/

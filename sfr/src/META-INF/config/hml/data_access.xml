@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+                           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+
+    <!-- =========================================================================================================== -->
+    <!-- Persistent Unit Padrao                                                                                      -->
+    <!-- =========================================================================================================== -->
+    <bean id="defaultPersistentUnitName" class="java.lang.String">
+        <constructor-arg value="manager1"/>
+    </bean>
+
+    <!-- =========================================================================================================== -->
+    <!-- Local onde encontra-se o persistence.xml                                                                    -->
+    <!-- =========================================================================================================== -->
+    <util:list id="persistentXmlPaths">
+        <value>${jpa.persistence.config.file}</value>
+    </util:list>
+
+    <!-- =========================================================================================================== -->
+    <!-- Cada Data Source deve ser registrado neste map                                                              -->
+    <!-- =========================================================================================================== -->
+    <util:map id="dataSources">
+        <entry key="datasource1"><ref local="dataSource1"/></entry>
+    </util:map>
+
+    <!-- =========================================================================================================== -->
+    <!-- Entity Manager 1                                                                                            -->
+    <!-- =========================================================================================================== -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" autowire-candidate="default">
+        <property name="persistenceUnitManager" ref="persistenceUnitManager"/>
+        <property name="persistenceUnitName" value="manager1"/>
+    </bean>
+
+    <!-- =========================================================================================================== -->
+    <!-- Data Source Entity Manager 1                                                                                -->
+    <!-- =========================================================================================================== -->
+    <bean id="dataSource1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:mem:webcon"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+        <!-- <property name="autoCommit" value="false"/> -->
+    </bean>
+</beans>
